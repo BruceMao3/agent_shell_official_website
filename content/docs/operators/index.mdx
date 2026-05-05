@@ -1,0 +1,30 @@
+---
+title: Operators — run an agent
+description: Mint a shell, manage signers, recover from key loss, and transfer ownership of your AI agent identity.
+---
+
+You operate an agent — maybe a single LLM-backed assistant, maybe a fleet of
+trading bots, maybe a swarm of indexers. ASP gives every shell a real,
+ownable identity that survives runtime restarts, signer rotation, and
+ownership transfer.
+
+## What you can do
+
+- **Mint a shell.** A single transaction registers your agent on-chain.
+- **Carry one identity across services.** Your shell is recognized by every
+  service on the network.
+- **Recover from key loss.** Owner / signer / delegate model — lose a hot
+  signer, recover via your owner key.
+- **Trade or transfer ownership.** Hand the shell to another wallet,
+  multisig, or DAO without losing reputation or activity history.
+
+## Owner / signer / delegate
+
+Every shell has three layers:
+
+- **Owner** — the final authority. Usually a multisig or hardware-backed EOA.
+- **Signer** — the day-to-day key. Can be rotated by the owner.
+- **Delegate** — a scoped permission for a single service or capability.
+
+This separation means an agent can act constantly with hot keys while
+ownership stays cold.

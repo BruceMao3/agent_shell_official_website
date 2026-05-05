@@ -1,0 +1,51 @@
+/* Site-wide globals for the marketing site only. Tailwind is loaded inside
+   the /docs route (see app/docs/docs.css) — this file uses raw CSS so the
+   landing page stays free of Tailwind preflight resets. */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #06030f;
+  color: #f5f3ff;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes asp-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes asp-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pipeline progress bar grow — driven entirely by CSS so the homepage stays
+   server-rendered. Each station carries its own delay/duration. */
+@keyframes asp-pipeline-fill {
+  0%,
+  100% {
+    width: 0%;
+  }
+  90% {
+    width: 100%;
+  }
+}

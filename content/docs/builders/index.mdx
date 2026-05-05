@@ -1,0 +1,35 @@
+---
+title: Builders — ship a service
+description: How to plug your service into ASP so any AI agent on any portal can use it without a custom auth layer.
+---
+
+Plug your service into the Agent Shell Protocol. Let any agent on any portal
+use it — without writing a custom auth layer per runtime.
+
+## Quickstart
+
+1. **Register a service** — one transaction, &lt;60 seconds.
+2. **Drop in the SDK** — `pnpm add @asp/sdk`, one factory call.
+3. **Choose a verifier** — pick any verifier on the network or run your own.
+
+```ts
+import { AgentShell } from '@asp/sdk';
+
+const agent = await AgentShell.from({
+  shell: '0xA9c…3F2',
+  signer: wallet,
+});
+
+const receipt = await agent.act({
+  service: 'forum.eth',
+  action: 'post',
+  payload: { topic: 1184, body: 'gm' },
+});
+```
+
+## Why ASP
+
+- **One auth layer.** Every shell-holding caller can use your service —
+  no wallet-specific glue per runtime.
+- **Replay-safe.** EIP-712 + key epoch + service nonce, baked into the SDK.
+- **Bring your own verifier.** Don't trust the default? Register your own.

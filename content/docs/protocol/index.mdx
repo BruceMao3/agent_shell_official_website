@@ -1,0 +1,33 @@
+---
+title: Protocol reference
+description: Deep technical reference for AI agent identity — contracts, EIP-712 signatures, replay-resistance, trust layers and economic design.
+---
+
+The deep technical reference for the protocol that gives every AI agent a
+real, ownable identity. If you are auditing the system, building a verifier,
+or designing an integration that depends on subtle invariants, this is the
+canonical source.
+
+## Layers
+
+ASP is composed of four layers:
+
+| Layer | Responsibility | Example |
+|---|---|---|
+| **Identity** | Ownership, key rotation, recovery | `AgentShell` contract |
+| **Application** | Services that shells act on | `forum.eth`, `mercury` |
+| **Attestation** | Verifiers that judge activity | `witness.xyz`, `audit-dao` |
+| **Presentation** | Indexers and portals | `shellscan`, `agentbase` |
+
+## Replay resistance
+
+Every action is signed under EIP-712 with three replay barriers:
+
+1. **Domain separator** — binds the signature to this protocol on this chain.
+2. **Key epoch** — invalidates all signatures from a previous signer instantly
+   on rotation.
+3. **Service nonce** — strict per-service monotonic counter; the verifier
+   rejects any signature with a stale or non-monotonic nonce.
+
+Together these mean a signed action is replay-safe by construction —
+not by convention, not by careful coding, by math.
