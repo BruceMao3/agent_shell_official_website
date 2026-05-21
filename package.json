@@ -11,7 +11,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "echo 'NOTE: next lint removed in Next 16 — restore via standalone ESLint config when needed' && exit 0",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "fumadocs-core": "^16.0.0",
@@ -22,6 +23,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.7",
